@@ -31,11 +31,15 @@
 
     <main>
       <div class="calculator">
-        <form class="calculator__form" action="">
+        <form id="calculator-form" class="calculator__form" action="">
           <div class="calculator__form__field-container">
             <div class="calculator__form__label-container">
               <label class="calculator__form__label" for="bill">Bill</label>
-              <span id="bill-error" class="calculator__form__error"></span>
+              <span
+                id="bill-error"
+                class="calculator__form__error"
+                aria-live="assertive"
+              ></span>
             </div>
             <input
               class="calculator__form__field bill-field"
@@ -44,9 +48,10 @@
               id="bill"
               placeholder="0"
               aria-describedby="bill-error"
+              aria-controls="calculator-result"
             />
           </div>
-          <fieldset class="calculator__form__field-container">
+          <fieldset class="calculator__form__field-container" aria-con>
             <legend id="tip-label" class="calculator__form__label">
               Select a tip %
             </legend>
@@ -56,42 +61,52 @@
               aria-labelledby="tip-label"
             >
               <button
-                class="btn"
+                class="btn tip-button"
                 type="button"
                 role="radio"
                 aria-checked="false"
+                data-value="5"
+                aria-controls="calculator-result"
               >
                 5%
               </button>
               <button
-                class="btn"
+                class="btn tip-button"
                 type="button"
                 role="radio"
                 aria-checked="false"
+                data-value="10"
+                aria-controls="calculator-result"
               >
                 10%
               </button>
               <button
-                class="btn"
+                class="btn tip-button"
                 type="button"
                 role="radio"
                 aria-checked="false"
+                data-value="15"
+                aria-controls="calculator-result"
               >
                 15%
               </button>
               <button
-                class="btn"
+                class="btn tip-button"
                 type="button"
                 role="radio"
                 aria-checked="false"
+                data-value="25"
+                aria-controls="calculator-result"
               >
                 25%
               </button>
               <button
-                class="btn"
+                class="btn tip-button"
                 type="button"
                 role="radio"
                 aria-checked="false"
+                data-value="50"
+                aria-controls="calculator-result"
               >
                 50%
               </button>
@@ -99,9 +114,10 @@
               <input
                 class="calculator__form__field custom-field"
                 type="number"
-                id="customTip"
+                id="custom-tip"
                 placeholder="Custom"
                 aria-label="Custom tip amount"
+                aria-controls="calculator-result"
               />
             </div>
           </fieldset>
@@ -110,7 +126,11 @@
               <label class="calculator__form__label" for="pax"
                 >Number of People</label
               >
-              <span id="pax-error" class="calculator__form__error"></span>
+              <span
+                id="pax-error"
+                class="calculator__form__error"
+                aria-live="assertive"
+              ></span>
             </div>
             <input
               class="calculator__form__field pax-field"
@@ -119,28 +139,29 @@
               id="pax"
               placeholder="0"
               aria-describedby="pax-error"
+              aria-controls="calculator-result"
             />
           </div>
         </form>
 
-        <div class="calculator__result">
+        <div id="calculator-result" class="calculator__result">
           <div class="calculator__result__container">
             <div class="calculator__result__row">
               <p class="calculator__result__label">
                 <strong class="calculator__result__title">Tip Amount</strong>
                 / person
               </p>
-              <p class="calculator__result__amount">$0.00</p>
+              <p id="tip-amount" class="calculator__result__amount">$0.00</p>
             </div>
             <div class="calculator__result__row">
               <p class="calculator__result__label">
-                <strong class="calculator__result__title">Tip Amount</strong>
+                <strong class="calculator__result__title">Total</strong>
                 / person
               </p>
-              <p class="calculator__result__amount">$0.00</p>
+              <p id="total-amount" class="calculator__result__amount">$0.00</p>
             </div>
           </div>
-          <button disabled class="btn reset-btn">reset</button>
+          <button id="reset-btn" class="btn reset-btn" disabled>reset</button>
         </div>
       </div>
     </main>
