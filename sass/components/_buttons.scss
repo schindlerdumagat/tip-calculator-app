@@ -21,6 +21,11 @@
     &:focus {
         background-color: var(--clr-green-400);
     }
+
+    &[aria-checked=true] {
+        color: var(--clr-green-900);
+        background-color: var(--clr-green-400)
+    }
 }
 
 .reset-btn {

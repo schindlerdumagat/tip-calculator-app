@@ -21,6 +21,7 @@
         background-color: var(--clr-grey-50);
         margin-top: var(--space-100);
         border: transparent;
+        border-radius: var(--rounded-xs);
         text-align: end;
         width: 100%;
         padding: var(--space-100) var(--space-200);
@@ -30,6 +31,10 @@
         background-repeat: no-repeat;
         background-position: 18px center;
         background-size: 16px;
+
+        &.custom-field {
+            margin: 0;
+        }
 
         &::placeholder {
             color: var(--clr-grey-550);
@@ -45,6 +50,10 @@
         
         &.custom-field {
             text-align: center;
+        }
+
+        &--error {
+            outline-color: var(--clr-orange-400);
         }
     }
 
