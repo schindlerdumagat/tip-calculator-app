@@ -37,7 +37,6 @@ ol {
 /* Set core body defaults */
 body {
   min-height: 100vh;
-  line-height: 1.5;
 }
 
 /* Set shorter line heights on headings and interactive elements */
@@ -47,8 +46,9 @@ h3,
 h4,
 button,
 input,
-label {
-  line-height: 1.1;
+label,
+body {
+  line-height: 1.5;
 }
 
 /* Balance text wrapping on headings */
@@ -78,6 +78,7 @@ button,
 textarea,
 select {
   font-family: inherit;
+  font-weight: inherit;
   font-size: inherit;
 }
 
@@ -102,4 +103,15 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+// For Accessibility purposes only
+.sr-only:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }

@@ -1,9 +1,0 @@
-@use '../abstracts' as *;
-
-.header {
-    padding-block-start: var(--space-600);
-
-    @include respond(xl) {
-        padding: 0;
-    }
-}

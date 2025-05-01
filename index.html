@@ -31,14 +31,14 @@
 
     <main>
       <div class="calculator">
-        <form class="tip-form" action="">
-          <div class="bill-field">
-            <div class="input-description-container">
-              <label class="tip-form__label" for="bill">Bill</label>
-              <span id="bill-error" class="error-message">Cannot be zero</span>
+        <form class="calculator__form" action="">
+          <div class="calculator__form__field-container">
+            <div class="calculator__form__label-container">
+              <label class="calculator__form__label" for="bill">Bill</label>
+              <span id="bill-error" class="calculator__form__error"></span>
             </div>
             <input
-              class="tip-form__input bill-input"
+              class="calculator__form__field bill-field"
               type="number"
               name="bill"
               id="bill"
@@ -46,17 +46,17 @@
               aria-describedby="bill-error"
             />
           </div>
-          <fieldset class="tip-field">
-            <legend id="tip-label" class="tip-form__label">
+          <fieldset class="calculator__form__field-container">
+            <legend id="tip-label" class="calculator__form__label">
               Select a tip %
             </legend>
             <div
-              class="tip-field__grid"
+              class="calculator__form__tip-grid"
               role="radiogroup"
               aria-labelledby="tip-label"
             >
               <button
-                class="btn tip-field__btn"
+                class="btn"
                 type="button"
                 role="radio"
                 aria-checked="false"
@@ -64,7 +64,7 @@
                 5%
               </button>
               <button
-                class="btn tip-field__btn"
+                class="btn"
                 type="button"
                 role="radio"
                 aria-checked="false"
@@ -72,7 +72,7 @@
                 10%
               </button>
               <button
-                class="btn tip-field__btn"
+                class="btn"
                 type="button"
                 role="radio"
                 aria-checked="false"
@@ -80,7 +80,7 @@
                 15%
               </button>
               <button
-                class="btn tip-field__btn"
+                class="btn"
                 type="button"
                 role="radio"
                 aria-checked="false"
@@ -88,7 +88,7 @@
                 25%
               </button>
               <button
-                class="btn tip-field__btn"
+                class="btn"
                 type="button"
                 role="radio"
                 aria-checked="false"
@@ -97,7 +97,7 @@
               </button>
 
               <input
-                class="tip-form__input custom-input"
+                class="calculator__form__field custom-field"
                 type="number"
                 id="customTip"
                 placeholder="Custom"
@@ -105,13 +105,15 @@
               />
             </div>
           </fieldset>
-          <div class="pax-field">
-            <div class="input-description-container">
-              <label class="tip-form__label" for="pax">Number of People</label>
-              <span id="pax-error" class="error-message">Cannot be zero</span>
+          <div class="calculator__form__field-container">
+            <div class="calculator__form__label-container">
+              <label class="calculator__form__label" for="pax"
+                >Number of People</label
+              >
+              <span id="pax-error" class="calculator__form__error"></span>
             </div>
             <input
-              class="tip-form__input pax-input"
+              class="calculator__form__field pax-field"
               type="number"
               name="pax"
               id="pax"
@@ -121,29 +123,27 @@
           </div>
         </form>
 
-        <div class="calculator-result">
-          <div class="calculator-result__container">
-            <div class="calculator-result__row">
-              <p class="calculator-result__label">
-                <strong class="calculator-result__title">Tip Amount</strong>
+        <div class="calculator__result">
+          <div class="calculator__result__container">
+            <div class="calculator__result__row">
+              <p class="calculator__result__label">
+                <strong class="calculator__result__title">Tip Amount</strong>
                 / person
               </p>
-              <p class="calculator-result__amount">$0.00</p>
+              <p class="calculator__result__amount">$0.00</p>
             </div>
-            <div class="calculator-result__row">
-              <p class="calculator-result__label">
-                <strong class="calculator-result__title">Tip Amount</strong>
+            <div class="calculator__result__row">
+              <p class="calculator__result__label">
+                <strong class="calculator__result__title">Tip Amount</strong>
                 / person
               </p>
-              <p class="calculator-result__amount">$0.00</p>
+              <p class="calculator__result__amount">$0.00</p>
             </div>
           </div>
-          <button class="btn reset-btn">reset</button>
+          <button disabled class="btn reset-btn">reset</button>
         </div>
       </div>
     </main>
-
-    <main></main>
 
     <script src="scripts/main.js"></script>
   </body>

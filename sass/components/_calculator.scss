@@ -1,0 +1,115 @@
+@use '../abstracts' as *;
+
+.calculator__form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-400);
+
+    &__label-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;  
+    }
+
+    &__error {
+        color: var(--clr-orange-400);
+    }
+
+    &__field {
+        display: block;
+        color: var(--clr-green-900);
+        background-color: var(--clr-grey-50);
+        margin-top: var(--space-100);
+        border: transparent;
+        text-align: end;
+        width: 100%;
+        padding: var(--space-100) var(--space-200);
+        outline-color: var(--clr-green-400);
+        cursor: pointer;
+        font-size: var(--text-lg);
+        background-repeat: no-repeat;
+        background-position: 18px center;
+        background-size: 16px;
+
+        &::placeholder {
+            color: var(--clr-grey-550);
+        }
+
+        &.bill-field {
+            background-image: url("../../images/icon-dollar.svg");
+        }
+        
+        &.pax-field {
+            background-image: url("../../images/icon-person.svg");
+        }
+        
+        &.custom-field {
+            text-align: center;
+        }
+    }
+
+    &__tip-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-200);
+        margin-top: var(--space-100);
+
+        @include respond(md) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @include respond(md) {
+        gap: clamp(var(--space-300), 0.3571rem + 2.381vw, var(--space-500));
+    }
+}
+
+.calculator__result {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--space-400);
+    background-color: var(--clr-green-900);
+    color: var(--clr-white);
+    border-radius: var(--rounded-sm);
+    padding: var(--space-300) clamp(var(--space-300), 1.0229rem + 2.0356vw, var(--space-400));
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-300);
+    }
+
+    &__row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__label {
+        font-size: var(--text-xs);
+        color: var(--clr-grey-400);
+    }
+
+    &__title {
+        font-size: var(--text-sm);
+        font-weight: inherit;
+    }
+
+    &__title {
+        display: block;
+        color: var(--clr-white);
+    }
+    &__amount {
+        font-size: var(--text-xl);
+        color: var(--clr-green-400);
+    }
+
+    @include respond(md) {
+        gap: var(--space-200);
+    }
+
+    @include respond(xl) {
+        gap: var(--space-1600);
+    }
+}

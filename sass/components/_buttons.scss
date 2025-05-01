@@ -1,11 +1,10 @@
 
-
 .btn {
     font-size: var(--text-lg);
     background-color: var(--clr-green-900);
     color: var(--clr-white);
     border-radius: var(--rounded-xs);
-    padding: 0.3em 0;
+    padding: 0.4em 1.6em;
     border: transparent;
     outline-color: 2px solid var(--clr-green-900);
     cursor: pointer;
@@ -25,6 +24,7 @@
 }
 
 .reset-btn {
+    font-size: var(--text-md);
     color: var(--clr-green-900);
     background-color: var(--clr-green-400);
     text-transform: uppercase;

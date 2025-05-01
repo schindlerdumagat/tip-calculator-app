@@ -1,9 +1,20 @@
+@use '../abstracts' as *;
+
 body {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: var(--space-500);
+    padding-block-start: var(--space-600);
+
+    @include respond(md) {
+        padding-block-end: var(--space-600);
+    }
+
+    @include respond(xl) {
+        padding: 0;
+    }
 }
 
 main {
