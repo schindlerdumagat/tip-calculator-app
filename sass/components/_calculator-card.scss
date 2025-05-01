@@ -1,0 +1,22 @@
+@use '../abstracts' as *;
+
+.calculator {
+    display: grid;
+    gap: clamp(var(--space-400), 1.6479rem + 1.5023vw, var(--space-600));
+    background-color: var(--clr-white);
+    padding-block: clamp(var(--space-400), 1.0458rem + 4.0712vw, var(--space-600));
+    padding-inline: clamp(var(--space-300), -1.8397rem + 14.2494vw, var(--space-1000));
+    border-start-start-radius: var(--rounded-md);
+    border-start-end-radius: var(--rounded-md);
+    box-shadow: var(--shadow-md);
+    max-width: clamp(38rem, 15.7143rem + 46.4286vw, 57.5rem);
+
+    @include respond(md) {
+        border-radius: var(--rounded-md);
+    }
+
+    @include respond(xl) {
+        grid-template-columns: repeat(2, 1fr);
+        padding: var(--space-300);
+    }
+}

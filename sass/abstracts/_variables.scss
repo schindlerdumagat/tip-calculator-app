@@ -1,0 +1,62 @@
+
+:root {
+
+    // COLORS
+
+    --clr-white: #FFFFFF;
+    --clr-black: #000000;
+    --clr-grey-600: #3D6666;
+    --clr-grey-550: #547878;
+    --clr-grey-500: #5E7A7D;
+    --clr-grey-400: #7F9D9F;
+    --clr-grey-300: #9EBBBD;
+    --clr-grey-200: #C5E4E7;
+    --clr-grey-50: #F3F9FA;
+    --clr-green-900: #00474B;
+    --clr-green-800: #085C61;
+    --clr-green-750: #0D686D;
+    --clr-green-400: #26C2AE;
+    --clr-green-200: #9FE8DF;
+    --clr-orange-400: #E17052;
+
+    // FONTS
+
+    --font-mono: "Space Mono", monospace;
+
+    --text-xs: 0.813rem;   // 8px
+    --text-sm: 1rem;     // 16px
+    --text-md: 1.25rem;  // 20px
+    --text-lg: 1.5rem;   // 24px
+    --text-xl: clamp(2rem, 1.0458rem + 4.0712vw, 3rem);  // 32px - 48px
+
+
+    // SPACING
+    
+    --space-0: 0;           // 0px
+    --space-100: 0.5rem;    // 8px
+    --space-200: 1rem;      // 16px
+    --space-300: 1.5rem;    // 24px
+    --space-400: 2rem;      // 32px
+    --space-500: 2.5rem;    // 40px
+    --space-600: 3rem;      // 48px
+    --space-1000: 5rem;     // 80px
+    --space-1200: 6rem;     // 96px
+    --space-1500: 7.5rem;   // 120px
+    --space-1600: 8rem;     // 128px
+
+    // BREAKPOINTS
+
+    --media-phone: 23.438em;  // 375px
+    --media-tablet: 48em;     // 768px
+    --media-desktop: 90em;    // 1440px
+
+    // BORDER
+
+    --rounded-xs: 5px;
+    --rounded-sm: 15px;
+    --rounded-md: 25px;
+
+    // BOX SHADOW
+
+    --shadow-md: 0px 32px 43px 0px rgba(79, 166, 175, 0.2);
+}

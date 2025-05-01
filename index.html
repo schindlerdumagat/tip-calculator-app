@@ -1,42 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Tip calculator app</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap" rel="stylesheet">
-  <!-- font-family: "Space Mono", monospace; -->
+    <title>Frontend Mentor | Tip calculator app</title>
 
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap"
+      rel="stylesheet"
+    />
 
-  Bill
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="sr-only">Sample Tip Calculator App</h1>
+      <img src="./images/logo.svg" alt="splitter" />
+    </header>
 
-  Select Tip %
-  5%
-  10%
-  15%
-  25%
-  50%
-  Custom
+    <main>
+      <div class="calculator">
+        <form class="tip-form" action="">
+          <div class="bill-field">
+            <div class="input-description-container">
+              <label class="tip-form__label" for="bill">Bill</label>
+              <span id="bill-error" class="error-message">Cannot be zero</span>
+            </div>
+            <input
+              class="tip-form__input bill-input"
+              type="number"
+              name="bill"
+              id="bill"
+              placeholder="0"
+              aria-describedby="bill-error"
+            />
+          </div>
+          <fieldset class="tip-field">
+            <legend id="tip-label" class="tip-form__label">
+              Select a tip %
+            </legend>
+            <div
+              class="tip-field__grid"
+              role="radiogroup"
+              aria-labelledby="tip-label"
+            >
+              <button
+                class="btn tip-field__btn"
+                type="button"
+                role="radio"
+                aria-checked="false"
+              >
+                5%
+              </button>
+              <button
+                class="btn tip-field__btn"
+                type="button"
+                role="radio"
+                aria-checked="false"
+              >
+                10%
+              </button>
+              <button
+                class="btn tip-field__btn"
+                type="button"
+                role="radio"
+                aria-checked="false"
+              >
+                15%
+              </button>
+              <button
+                class="btn tip-field__btn"
+                type="button"
+                role="radio"
+                aria-checked="false"
+              >
+                25%
+              </button>
+              <button
+                class="btn tip-field__btn"
+                type="button"
+                role="radio"
+                aria-checked="false"
+              >
+                50%
+              </button>
 
-  Number of People
+              <input
+                class="tip-form__input custom-input"
+                type="number"
+                id="customTip"
+                placeholder="Custom"
+                aria-label="Custom tip amount"
+              />
+            </div>
+          </fieldset>
+          <div class="pax-field">
+            <div class="input-description-container">
+              <label class="tip-form__label" for="pax">Number of People</label>
+              <span id="pax-error" class="error-message">Cannot be zero</span>
+            </div>
+            <input
+              class="tip-form__input pax-input"
+              type="number"
+              name="pax"
+              id="pax"
+              placeholder="0"
+              aria-describedby="pax-error"
+            />
+          </div>
+        </form>
 
-  Tip Amount
-  / person
+        <div class="calculator-result">
+          <div class="calculator-result__container">
+            <div class="calculator-result__row">
+              <p class="calculator-result__label">
+                <strong class="calculator-result__title">Tip Amount</strong>
+                / person
+              </p>
+              <p class="calculator-result__amount">$0.00</p>
+            </div>
+            <div class="calculator-result__row">
+              <p class="calculator-result__label">
+                <strong class="calculator-result__title">Tip Amount</strong>
+                / person
+              </p>
+              <p class="calculator-result__amount">$0.00</p>
+            </div>
+          </div>
+          <button class="btn reset-btn">reset</button>
+        </div>
+      </div>
+    </main>
 
-  Total
-  / person
+    <main></main>
 
-  Reset
-
-  <script src="scripts/main.js"></script>
-  
-</body>
+    <script src="scripts/main.js"></script>
+  </body>
 </html>
