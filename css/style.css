@@ -286,10 +286,10 @@ main {
   color: var(--clr-grey-550);
 }
 .calculator__form__field.bill-field {
-  background-image: url("/images/icon-dollar.svg");
+  background-image: url("../images/icon-dollar.svg");
 }
 .calculator__form__field.pax-field {
-  background-image: url("/images/icon-person.svg");
+  background-image: url("../images/icon-person.svg");
 }
 .calculator__form__field.custom-field {
   text-align: center;
