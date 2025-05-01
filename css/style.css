@@ -234,6 +234,10 @@ main {
 .btn:focus {
   background-color: var(--clr-green-400);
 }
+.btn[aria-checked=true] {
+  color: var(--clr-green-900);
+  background-color: var(--clr-green-400);
+}
 
 .reset-btn {
   font-size: var(--text-md);
@@ -265,6 +269,7 @@ main {
   background-color: var(--clr-grey-50);
   margin-top: var(--space-100);
   border: transparent;
+  border-radius: var(--rounded-xs);
   text-align: end;
   width: 100%;
   padding: var(--space-100) var(--space-200);
@@ -274,6 +279,9 @@ main {
   background-repeat: no-repeat;
   background-position: 18px center;
   background-size: 16px;
+}
+.calculator__form__field.custom-field {
+  margin: 0;
 }
 .calculator__form__field::placeholder {
   color: var(--clr-grey-550);
@@ -286,6 +294,9 @@ main {
 }
 .calculator__form__field.custom-field {
   text-align: center;
+}
+.calculator__form__field--error {
+  outline-color: var(--clr-orange-400);
 }
 .calculator__form__tip-grid {
   display: grid;
