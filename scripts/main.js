@@ -136,6 +136,7 @@ function handleFormControlClick(e) {
         tipPercent = e.target.dataset.value;
         removeSelectedTipButton();
         e.target.setAttribute("aria-checked", true);
+        processInputs(billAmount, tipPercent, paxNumber);
     } else if (e.target.tagName === 'INPUT' && e.target.id === "custom-tip") {
         if (Number(e.target.value) !== 0) {
             tipPercent = Number(e.target.value);
@@ -144,8 +145,8 @@ function handleFormControlClick(e) {
             clearResult();
         }
         removeSelectedTipButton();
+        processInputs(billAmount, tipPercent, paxNumber);
     }
-    processInputs(billAmount, tipPercent, paxNumber);
 }
 
 form.addEventListener("input", handleInputChange);
