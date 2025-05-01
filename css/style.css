@@ -171,7 +171,6 @@ fieldset {
 body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   gap: var(--space-500);
   padding-block-start: var(--space-600);
@@ -183,7 +182,7 @@ body {
 }
 @media (min-width: 90em) {
   body {
-    padding: 0;
+    padding-block-start: var(--space-1600);
   }
 }
 
