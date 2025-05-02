@@ -34,10 +34,13 @@ function calculateTipAndTotal(billAmount, tipPercent, paxNumber) {
 // Checks if the input values are valid before processing it
 function processInputs(billAmount, tipPercent, paxNumber) {
 
-    if (billAmount && tipPercent && paxNumber) {
-        const { tipAmount, totalAmount } = calculateTipAndTotal(billAmount, tipPercent, paxNumber);
-        updateResultView(tipAmount, totalAmount);
+    if (billAmount <= 0 || tipPercent <= 0 || paxNumber <= 0) {
+        return;
     }
+
+    const { tipAmount, totalAmount } = calculateTipAndTotal(billAmount, tipPercent, paxNumber);
+    updateResultView(tipAmount, totalAmount);
+    removeErrors();
 }
 
 // Checks what input field is changed recently and assign it to the corresponding variable
@@ -93,7 +96,6 @@ function resetCalculator() {
     
     removeSelectedTipButton();
     clearResult();
-    removeErrors();
 }
 
 // Resets the result box to its original state
@@ -105,13 +107,28 @@ function clearResult() {
     resetBtn.setAttribute("disabled", true);
 }
 
+// Validator for number inputs
+const numberValidations = {
+    isNegative: (val) => val < 0 && "Can't be negative",
+    isEmpty: (val) => val === 0 && "Can't be zero"
+}
+
 // Adds styling and error message for input elements with invalid values
 function showError(e) {
 
+    let errorMessage;
+
+    for (const validator in numberValidations) {
+        errorMessage = numberValidations[validator](Number(e.target.value));
+        if (errorMessage) {
+            break;
+        }
+    }
+
     if (e.target.id === "bill") {
-        billError.innerText = "Can't be zero";
+        billError.innerText = errorMessage || "";
     } else if (e.target.id === "pax") {
-        paxError.innerText = "Can't be zero";
+        paxError.innerText = errorMessage || "";
     }
     e.target.classList.add("calculator__form__field--error");
 }
@@ -120,7 +137,7 @@ function showError(e) {
 function handleInputChange(e) {
 
     checkInputOrigin(e);
-    if (e.target.tagName === 'INPUT' && Number(e.target.value) !== 0) {
+    if (e.target.tagName === 'INPUT' && Number(e.target.value) > 0) {
         processInputs(billAmount, tipPercent, paxNumber);
         e.target.classList.remove("calculator__form__field--error");
     } else {
