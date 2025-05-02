@@ -150,15 +150,16 @@ function handleInputChange(e) {
 function handleFormControlClick(e) {
 
     if (e.target.tagName === 'BUTTON') {
+        
         tipPercent = e.target.dataset.value;
         removeSelectedTipButton();
         e.target.setAttribute("aria-checked", true);
         processInputs(billAmount, tipPercent, paxNumber);
     } else if (e.target.tagName === 'INPUT' && e.target.id === "custom-tip") {
-        if (Number(e.target.value) !== 0) {
-            tipPercent = Number(e.target.value);
-        } else {
-            tipPercent = 0;
+
+        tipPercent = Number(e.target.value);
+        if (tipPercent <= 0) {
+            showError(e);
             clearResult();
         }
         removeSelectedTipButton();
