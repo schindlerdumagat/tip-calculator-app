@@ -282,6 +282,13 @@ main {
 }
 .calculator__form__field.custom-field {
   margin: 0;
+  text-align: center;
+}
+.calculator__form__field.custom-field--selected {
+  border: 2px solid var(--clr-green-400);
+}
+.calculator__form__field.custom-field--error {
+  border: 2px solid var(--clr-orange-400);
 }
 .calculator__form__field::placeholder {
   color: var(--clr-grey-550);
@@ -291,9 +298,6 @@ main {
 }
 .calculator__form__field.pax-field {
   background-image: url("../images/icon-person.svg");
-}
-.calculator__form__field.custom-field {
-  text-align: center;
 }
 .calculator__form__field--error {
   outline-color: var(--clr-orange-400);
