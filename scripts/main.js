@@ -56,6 +56,7 @@ function checkInputOrigin(e) {
             break;
         }
         case 'pax': {
+            e.target.value = e.target.value.replace(/[^0-9-]/g, '').replace(/^(-?)(\d*).*$/, '$1$2'); // Does not allow decimal numbers
             paxNumber = e.target.value;
             break;
         }
