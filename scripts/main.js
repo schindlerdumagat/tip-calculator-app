@@ -1,11 +1,13 @@
-const form = document.querySelector('#calculator-form');
 const tipAmount = document.querySelector('#tip-amount');
 const totalAmount = document.querySelector('#total-amount');
 const resetBtn = document.querySelector('#reset-btn');
 const inputFields = document.querySelectorAll('input');
-const tipButtons = document.querySelectorAll('.tip-button');
 const billError = document.querySelector('#bill-error');
 const paxError = document.querySelector('#pax-error');
+const customTipInput = document.querySelector('#custom-tip');
+const billInput = document.querySelector('#bill');
+const paxInput = document.querySelector('#pax');
+const tipGrid = document.querySelector('.calculator__form__tip-grid');
 
 let billAmount = 0;
 let tipPercent = 0;
@@ -43,27 +45,6 @@ function processInputs(billAmount, tipPercent, paxNumber) {
     removeErrors();
 }
 
-// Checks what input field is changed recently and assign it to the corresponding variable
-function checkInputOrigin(e) {
-
-    switch (e.target.id) {
-        case 'bill': {
-            billAmount = e.target.value;
-            break;
-        }
-        case 'custom-tip': {
-            tipPercent = e.target.value;
-            break;
-        }
-        case 'pax': {
-            e.target.value = e.target.value.replace(/[^0-9-]/g, '').replace(/^(-?)(\d*).*$/, '$1$2'); // Does not allow decimal numbers
-            paxNumber = e.target.value;
-            break;
-        }
-    }
-
-}
-
 // Removes the selected button attribute
 function removeSelectedTipButton() {
 
@@ -96,6 +77,7 @@ function resetCalculator() {
     paxNumber = 0;
     
     removeSelectedTipButton();
+    customTipInput.classList.remove("custom-field--selected", "custom-field--error");
     clearResult();
 }
 
@@ -134,40 +116,76 @@ function showError(e) {
     e.target.classList.add("calculator__form__field--error");
 }
 
-// Event handler for input elements
-function handleInputChange(e) {
+// Event handler for input changes
+function handleInput(e) {
 
-    checkInputOrigin(e);
-    if (e.target.tagName === 'INPUT' && Number(e.target.value) > 0) {
+    const targetInputId = e.target.id;
+
+    if (targetInputId == "bill") {
+        billAmount = Number(e.target.value);
+    } else if (targetInputId == "custom-tip") {
+        tipPercent = Number(e.target.value);
+    } else if (targetInputId == "pax") {
+        e.target.value = e.target.value.replace(/[^0-9-]/g, '').replace(/^(-?)(\d*).*$/, '$1$2'); // Does not allow decimal numbers
+        paxNumber = Number(e.target.value);
+    }
+
+    if (Number(e.target.value) > 0) {
         processInputs(billAmount, tipPercent, paxNumber);
         e.target.classList.remove("calculator__form__field--error");
+
+        if (targetInputId == "custom-tip") {
+            customTipInput.classList.add("custom-field--selected");
+            customTipInput.classList.remove("custom-field--error");
+        }
+
     } else {
         showError(e);
         clearResult();
+
+        if (targetInputId == "custom-tip") {
+            customTipInput.classList.add("custom-field--error");
+            customTipInput.classList.remove("custom-field--selected");
+        }
     }
+
 }
 
-// Event handler for tip grid items
-function handleFormControlClick(e) {
+// Event handler for tip buttons
+function handleTipButtonClick(e) {
 
     if (e.target.tagName === 'BUTTON') {
         
         tipPercent = e.target.dataset.value;
         removeSelectedTipButton();
         e.target.setAttribute("aria-checked", true);
+        customTipInput.classList.remove("custom-field--selected", "custom-field--error");
         processInputs(billAmount, tipPercent, paxNumber);
-    } else if (e.target.tagName === 'INPUT' && e.target.id === "custom-tip") {
-
-        tipPercent = Number(e.target.value);
-        if (tipPercent <= 0) {
-            showError(e);
-            clearResult();
-        }
-        removeSelectedTipButton();
-        processInputs(billAmount, tipPercent, paxNumber);
-    }
+    } 
 }
 
-form.addEventListener("input", handleInputChange);
-form.addEventListener("click", handleFormControlClick);
-resetBtn.addEventListener("click", resetCalculator)
+// Event handler for selecting custom tip
+function handleCustomTipSelect(e) {
+
+    tipPercent = Number(e.target.value);
+    if (tipPercent <= 0) {
+        showError(e);
+        clearResult();
+        customTipInput.classList.add("custom-field--error");
+        customTipInput.classList.remove("custom-field--selected");
+    } else {
+        customTipInput.classList.add("custom-field--selected");
+        customTipInput.classList.remove("custom-field--error");
+    }
+    
+    removeSelectedTipButton();
+    processInputs(billAmount, tipPercent, paxNumber);
+
+}
+
+billInput.addEventListener("input", handleInput);
+customTipInput.addEventListener("input", handleInput);
+paxInput.addEventListener("input", handleInput);
+tipGrid.addEventListener("click", handleTipButtonClick);
+resetBtn.addEventListener("click", resetCalculator);
+customTipInput.addEventListener("click", handleCustomTipSelect);
